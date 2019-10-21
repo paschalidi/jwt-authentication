@@ -11,7 +11,7 @@ import {
 import { compare, hash } from "bcryptjs";
 import { User } from "./entity/User";
 import { MyContext } from "./MyContext";
-import { createAccessToken, createRefreshToken } from "./auth";
+import { createAccessToken, createRefreshToken } from "./utils/auth";
 import { isAuth } from "./isAuth";
 
 @ObjectType()
