@@ -12,14 +12,14 @@ import { createAccessToken, createRefreshToken } from "./utils/auth";
 import cors from "cors";
 
 (async () => {
-  const corsOptions = {
-    origin: "http://localhost:3000",
-    credentials: true // <-- REQUIRED backend setting
-  };
   const app = express();
-
+  app.use(
+    cors({
+      origin: "http://localhost:3000",
+      credentials: true
+    })
+  );
   app.use(cookieParser());
-  app.use(cors(corsOptions));
 
   app.get("/", (_, res) => res.send("hello"));
 
@@ -58,6 +58,6 @@ import cors from "cors";
     context: ({ req, res }) => ({ req, res })
   });
 
-  apolloServer.applyMiddleware({ app });
+  apolloServer.applyMiddleware({ app, cors: false });
   app.listen(4000, () => console.log("Listens at http://localhost:4000"));
 })();
