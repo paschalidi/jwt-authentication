@@ -9,10 +9,17 @@ import cookieParser = require("cookie-parser");
 import { verify } from "jsonwebtoken";
 import { User } from "./entity/User";
 import { createAccessToken, createRefreshToken } from "./utils/auth";
+import cors from "cors";
 
 (async () => {
+  const corsOptions = {
+    origin: "http://localhost:3000",
+    credentials: true // <-- REQUIRED backend setting
+  };
   const app = express();
+
   app.use(cookieParser());
+  app.use(cors(corsOptions));
 
   app.get("/", (_, res) => res.send("hello"));
 
