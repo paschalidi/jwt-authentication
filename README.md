@@ -1,4 +1,4 @@
-A simple jwt-authentication-graphql project
+A dead simple jwt-authentication-graphql project
 
 1. starting postgress 
 ```
